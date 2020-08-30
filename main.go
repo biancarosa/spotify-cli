@@ -39,8 +39,16 @@ func main() {
 
 	switch command {
 	case "now":
-		cp, _ := client.PlayerCurrentlyPlaying()
-		fmt.Printf("Tocando agora: %s by %s", cp.Item.Name, cp.Item.Artists[0].Name)
+		cp, err := client.PlayerCurrentlyPlaying()
+		if err == nil {
+			if cp.Playing {
+				fmt.Printf("Tocando agora: %s by %s", cp.Item.Name, cp.Item.Artists[0].Name)
+			} else {
+				fmt.Println("Você não está ouvindo nada agora!")
+			}
+		} else {
+			fmt.Println("Deu erro!")
+		}
 	default:
 		fmt.Println("Comando não implementado")
 	}
