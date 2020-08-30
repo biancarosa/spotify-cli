@@ -5,9 +5,9 @@
 ## O projeto: CLI pra controlar o Spotify via terminal
 
 - spotify now [22-08]
-- spotify play [29-08, ~21h]
-- spotify pause [29-08, ~21h]
-- spotify next [29-08, ~21h]
+- spotify play [29-08]
+- spotify pause [29-08]
+- spotify next [29-08]
 
 ## Ordem não definida, mas vamos cobrir
 
