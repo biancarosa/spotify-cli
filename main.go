@@ -21,7 +21,8 @@ func main() {
 	}
 	command := os.Args[1]
 	auth := spotify.NewAuthenticator(redirectURL, spotify.ScopeUserReadPrivate,
-		spotify.ScopeUserLibraryRead, spotify.ScopeUserReadCurrentlyPlaying)
+		spotify.ScopeUserLibraryRead, spotify.ScopeUserReadCurrentlyPlaying,
+		spotify.ScopeUserModifyPlaybackState)
 
 	url := auth.AuthURL(state)
 	fmt.Printf("%s %s\n", "Acesse a URL em :: ", url)
@@ -47,7 +48,28 @@ func main() {
 				fmt.Println("Você não está ouvindo nada agora!")
 			}
 		} else {
-			fmt.Println("Deu erro!")
+			fmt.Println(err.Error())
+		}
+	case "play":
+		err := client.Play()
+		if err == nil {
+			fmt.Println("Curta sua musiquinha!")
+		} else {
+			fmt.Println(err.Error())
+		}
+	case "pause":
+		err := client.Pause()
+		if err == nil {
+			fmt.Println("Música pausada")
+		} else {
+			fmt.Println(err.Error())
+		}
+	case "next":
+		err := client.Next()
+		if err == nil {
+			fmt.Println("Mudei de música!")
+		} else {
+			fmt.Println(err.Error())
 		}
 	default:
 		fmt.Println("Comando não implementado")
