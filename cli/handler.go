@@ -5,6 +5,7 @@ import (
 	"github.com/zmb3/spotify"
 )
 
+//HandleCommandLineInput é um metodo que cebe um spotify client e um comando para executar com ele
 func HandleCommandLineInput(client *spotify.Client, command string) {
 	switch command {
 	case "now":
