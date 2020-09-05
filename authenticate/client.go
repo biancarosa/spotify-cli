@@ -3,6 +3,7 @@ package authenticate
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/biancarosa/spotify-cli/random"
 	"golang.org/x/oauth2"
 	"net/http"
 	"os"
@@ -13,7 +14,7 @@ import (
 var (
 	ch          = make(chan *spotify.Client)
 	redirectURL = "http://localhost:8080/callback"
-	state       = "login" // TODO: Gerar randomicamente
+	state       = random.GenerateRandomString(10)
 )
 
 // GetClient é um método que autentica via oauth2 no spotify e retorna um spotify client
