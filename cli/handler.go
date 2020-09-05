@@ -3,6 +3,7 @@ package cli
 import (
 	"fmt"
 	"github.com/zmb3/spotify"
+	"time"
 
 	"github.com/biancarosa/spotify-cli/authenticate"
 )
@@ -66,6 +67,11 @@ func (h *Next) HandleCommand() {
 	} else {
 		fmt.Println(err.Error())
 	}
+	time.Sleep(2 * time.Second)
+	pn := PlayingNow{
+		client: h.client,
+	}
+	pn.HandleCommand()
 }
 
 //HandleCommandLineInput é um metodo que cebe um spotify client e um comando para executar com ele
