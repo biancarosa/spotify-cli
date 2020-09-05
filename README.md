@@ -4,10 +4,27 @@
 
 ## O projeto: CLI pra controlar o Spotify via terminal
 
-- spotify now [22-08]
-- spotify play [29-08]
-- spotify pause [29-08]
-- spotify next [29-08]
+### 22-08 - first live
+
+- setup do projeto
+- gomod
+- oauth2
+- mostrar o que o usuario está ouvindo agora no spotify
+
+## 29-08 - 2nd live
+
+- spotify next
+- spotify pause
+- spotify play
+- melhorando o fluxo de oauth
+- quebrando em pacotes
+
+## 05-09 - 3rd live
+
+- mais refactor
+- randomizar o state
+- interfaces & POO
+- lidando melhor com env vars
 
 ## Ordem não definida, mas vamos cobrir
 
@@ -19,16 +36,3 @@
 - profiling
 - benchmarks
 - race conditions
-
-## CLI - Command Line Interface
-
----- Compilada
----- Não exige que o usuario tenha nada instalado além do seu binário
----- Fácil de programar
-
-
-# OAuth
-
-- Request pro Spotify com o CLIENT_ID e o CLIENT_SECRET - OK
-- Precisamos pegar um access code - OK
-- Trocamos esse access code por um access token 
