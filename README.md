@@ -24,7 +24,7 @@
 - mais refactor
 - randomizar o state
 - interfaces & POO
-- lidando melhor com env vars
+- arquivos .env e env vars: facilitando a nossa vida como devsg
 
 ## Ordem não definida, mas vamos cobrir
 
