@@ -2,11 +2,14 @@ package cli
 
 import (
 	"fmt"
-	"github.com/zmb3/spotify"
+
+	"github.com/biancarosa/spotify-cli/authenticate"
 )
 
 //HandleCommandLineInput é um metodo que cebe um spotify client e um comando para executar com ele
-func HandleCommandLineInput(client *spotify.Client, command string) {
+func HandleCommandLineInput(command string) {
+	client := authenticate.GetClient()
+
 	switch command {
 	case "now":
 		cp, err := client.PlayerCurrentlyPlaying()

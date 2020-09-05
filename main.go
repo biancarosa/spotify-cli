@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/biancarosa/spotify-cli/authenticate"
 	"github.com/biancarosa/spotify-cli/cli"
 )
 
@@ -14,6 +13,5 @@ func main() {
 		return
 	}
 	command := os.Args[1]
-	client := authenticate.GetClient()
-	cli.HandleCommandLineInput(client, command)
+	cli.HandleCommandLineInput(command)
 }
