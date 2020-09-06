@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"time"
 
 	"github.com/joho/godotenv"
 
@@ -15,7 +14,6 @@ func main() {
 	if err != nil {
 		fmt.Println(".env file not found")
 	}
-
 	if len(os.Args) < 2 {
 		fmt.Println("Envie pelo menos um argumento")
 		return
