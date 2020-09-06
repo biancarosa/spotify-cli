@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/biancarosa/spotify-cli/random"
 	"golang.org/x/oauth2"
-	"net/http"
 	"os"
 
 	"github.com/zmb3/spotify"
@@ -24,35 +23,7 @@ func GetClient() *spotify.Client {
 		spotify.ScopeUserModifyPlaybackState)
 
 	f, err := os.Open("token.json")
-	if err != nil {
-		fmt.Println(err.Error())
-
-		http.HandleFunc("/callback", func(w http.ResponseWriter, r *http.Request) {
-			fmt.Fprintf(w, "Recebi o seu request")
-			token, _ := auth.Token(state, r)
-
-			f, err := os.Create("token.json")
-			if err != nil {
-				fmt.Println(err.Error())
-			}
-			// io.Writer -> interface
-			// File é uma estrutura que implementa os métodos de um io.Writer
-			enc := json.NewEncoder(f)
-			err = enc.Encode(token)
-			if err != nil {
-				fmt.Println(err.Error())
-			}
-			f.Close()
-
-			client := auth.NewClient(token)
-			ch <- &client
-		})
-
-		go http.ListenAndServe(":8080", nil)
-
-		url := auth.AuthURL(state)
-		fmt.Printf("%s %s\n", "Acesse a URL em :: ", url)
-	} else {
+	if err == nil {
 		enc := json.NewDecoder(f)
 		var token *oauth2.Token
 		err = enc.Decode(&token)
@@ -64,6 +35,11 @@ func GetClient() *spotify.Client {
 		return &client
 	}
 
+	s := new(Server)
+	s.Start(ch, state, &auth)
+	url := auth.AuthURL(state)
+	fmt.Printf("%s %s\n", "Acesse a URL em :: ", url)
 	client := <-ch
+	s.Stop()
 	return client
 }
